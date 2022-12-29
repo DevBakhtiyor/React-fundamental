@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import './index.css';
+
 // function Greeting() {
 //   return <h2>My First Component</h2>;
 // }
@@ -60,18 +62,71 @@ import ReactDOM from 'react-dom/client';
 //     </>
 //   );
 // }
-function Greeting() {
+// function Greeting() {
+//   return (
+//     <div>
+//       <Person />
+//       <Message />
+//     </div>
+//   );
+// }
+// const Person = () => <h2>john doe</h2>;
+// const Message = () => {
+//   return <p>this is my message</p>;
+// };
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<Greeting />);
+
+// const img = './img/book-1.jpg';
+// const title = 'Interesting Facts For Curious Minds';
+// const author = 'Jordan Moore';
+
+const firstBook = {
+  author: 'Jordan Moore',
+  title: 'Interesting Facts For Curious Minds',
+  img: './img/book-1.jpg',
+};
+const secondBook = {
+  author: 'James Clear',
+  title: 'Atomic Habits',
+  img: './img/book-2.jpg',
+};
+const thirdBook = {
+  author: 'Jim Edwards',
+  title: 'Say Thank You for Everything',
+  img: './img/book-3.jpg',
+};
+
+const BookList = () => {
   return (
-    <div>
-      <Person />
-      <Message />
-    </div>
+    <section className="booklist">
+      <Book
+        img={firstBook.img}
+        title={firstBook.title}
+        author={firstBook.author}
+      />
+      <Book
+        img={secondBook.img}
+        title={secondBook.title}
+        author={secondBook.author}
+      />
+      <Book
+        img={thirdBook.img}
+        title={thirdBook.title}
+        author={thirdBook.author}
+      />
+    </section>
   );
-}
-const Person = () => <h2>john doe</h2>;
-const Message = () => {
-  return <p>this is my message</p>;
+};
+const Book = props => {
+  return (
+    <article className="book">
+      <img src={props.img} alt={props.title} />
+      <h2>{props.title}</h2>
+      <h4>{props.author}</h4>
+    </article>
+  );
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Greeting />);
+root.render(<BookList />);
